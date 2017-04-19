@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Page Not Found</title>
+    <!-- Behavioral Meta Data -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+    <style>
+
+        * {
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        html {
+            color: #fff;
+            display: table;
+            font-family: 'Karla', sans-serif;
+            height: 100%;
+            text-align: center;
+            width: 100%;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 2em auto;
+            background-color: #33d4c0;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 3em;
+            font-weight: 400;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 0 auto;
+            width: 280px;
+        }
+
+        img {
+            
+        }
+
+        /* large eyes */
+        #eyes {
+            margin:2em auto;
+            width:281px; 
+            height: 178px;
+            background-image:url(pl.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+
+        .pupil-container {
+            width:83px; 
+            height:83px; 
+            position:relative; 
+            border-radius:80px;
+            overflow:hidden;
+            background-color: white;
+        }
+
+        .highlight-right {
+            position: absolute;
+            top:30px;
+            left:43px;
+            width:21px;
+            height:21px;
+            background-color: white;
+            border-radius: 41px;
+            display:block;
+        }
+
+
+        .highlight-left {
+            position: absolute;
+            top:30px;
+            left:43px;
+            width:21px;
+            height:21px;
+            background-color: white;
+            border-radius: 41px;
+            display:block;
+        }
+
+        #pupil-left-container {
+            top:66px;
+            left:31px;
+        }
+
+        #pupil-right-container {
+            top:-17px;
+            left:167px;
+        }
+
+        .pupil {
+            margin:20px;
+            width:41px; 
+            height:41px; 
+            left:20px; 
+            top:20px; 
+            border-radius:41px; 
+            background-color:#33d4c0; 
+            position:relative;
+        }
+
+        #cloner, #cloned {
+            width:381px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #cloned {
+            /*background-color: #33d4c0;*/
+
+            /*border:1px solid red;*/
+            display: block;
+            background-color: red;
+            /*background-color: #33d4c0;*/
+            /*opacity: 0.4;*/
+            zoom:1.05;
+            display: inline-block;
+            height:98%;
+            mask: url(clip.svg);
+            -webkit-mask: url(clip.svg) center center no-repeat;
+
+        }
+
+/*        #cloned:after {
+            content: '';
+            display:block;
+            width:160px;
+            height:160px;
+            border:1px solid red;
+            overflow:hidden;
+            border-radius:180px;
+        }*/
+
+        #magnifier-container {
+            margin: 0 auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-top:-240px;
+        }
+
+        #magnifier {
+            /*position: absolute;*/
+            width:160px;
+            height:160px;
+            border:16px solid gray;
+            border-radius: 100px;
+            margin:0 auto;
+            background-image: url(highlight.png);
+            background-repeat: no-repeat;
+            background-size: 35px 120px;
+            background-position: 120px 17px;
+            /*mix-blend-mode: soft-light;*/
+        }
+
+        #magnifier:after {
+            content: '';
+            display:block;
+            width:25px;
+            height:100px;
+            background-color:gray;
+            position:relative;
+            top:130px;
+            left:-30px;
+            transform: rotate(45deg);
+        }
+
+
+        @media only screen and (max-width: 280px) {
+
+            body, p {
+                width: 95%;
+                font-size: 1em;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                margin: 0 0 0.3em;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <span id="cloner">
+    <h1>We looked everywhere!</h1>
+    <div id="eyes">
+        <div id="pupil-left-container" class="pupil-container">
+            <div id="pupil-left" class="pupil layer" data-depth="3"></div>
+            <div class="highlight-left" class='layer' data-depth="0"></div>
+        </div>
+        <div id="pupil-right-container" class="pupil-container">
+            <div id="pupil-right" class="pupil layer" data-depth="3"></div>
+            <div class="highlight-right" class='layer' data-depth="0"></div>
+        </div>
+    </div>
+    <p>But the page you were trying to view does not exist.</p>
+    </span>
+
+    <span id="cloned"></span>   
+
+    <div id="magnifier-container">
+        <div id="magnifier" class="layer" data-depth="10">
+            <div id="magnifier-highlight"></div>
+        </div>
+    </div>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script type="text/javascript" src="js/jqeye.js"></script>
+    <script type="text/javascript" src="js/jquery.parallax.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            // $(body).css('cursor:none;');
+            $('#pupil-left-container').parallax({
+              invertX: false,
+              invertY: false,
+              scalarX: 10,
+              scalarY: 10
+            });
+            $('#pupil-right-container').parallax({
+              invertX: false,
+              invertY: false,
+              scalarX: 10,
+              scalarY: 10
+            });
+
+            $('#cloned-container').parallax({
+              invertX: false,
+              invertY: false,
+              scalarX: 5,
+              scalarY: 20
+            });
+
+            $('#magnifier-container').parallax({
+              invertX: false,
+              invertY: false,
+              scalarX: 5,
+              scalarY: 20
+            });
+
+            $('#cloner').clone().appendTo("#cloned");
+            
+            // $('#cloned').remove('#magnifier-container');
+
+            // $(document).mousemove(function(e){
+            //     $("#cloned").css({left:e.pageX+82, top:e.pageY+5});
+            // });
+
+        });
+
+    </script>
+</body>
+</html>
+<!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->

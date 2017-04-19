@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Page Not Found</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+    <style>
+
+        * {
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        html {
+            color: #fff;
+            display: table;
+            font-family: 'Karla', sans-serif;
+            height: 100%;
+            text-align: center;
+            width: 100%;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 2em auto;
+            background-color: #33d4c0;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 3em;
+            font-weight: 400;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 0 auto;
+            width: 280px;
+        }
+
+        img {
+            
+        }
+
+        /* large eyes */
+        #eyes {
+            margin:2em auto;
+            width:281px; 
+            height: 178px;
+            background-image:url(pl.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+
+        .pupil-container {
+            width:83px; 
+            height:83px; 
+            position:relative; 
+            border-radius:80px;
+            overflow:hidden;
+            background-color: white;
+        }
+
+        .highlight-right {
+            position: absolute;
+            top:30px;
+            left:43px;
+            width:21px;
+            height:21px;
+            background-color: white;
+            border-radius: 41px;
+            display:block;
+        }
+
+
+        .highlight-left {
+            position: absolute;
+            top:30px;
+            left:43px;
+            width:21px;
+            height:21px;
+            background-color: white;
+            border-radius: 41px;
+            display:block;
+        }
+
+        #pupil-left-container {
+            top:66px;
+            left:31px;
+            /* the highlight */
+        }
+
+        #pupil-right-container {
+            top:-17px;
+            left:167px;
+        }
+
+        .pupil {
+            width:41px; 
+            height:41px; 
+            left:20px; 
+            top:20px; 
+            border-radius:41px; 
+            background-color:#33d4c0; 
+            position:relative;
+        }
+
+        @media only screen and (max-width: 280px) {
+
+            body, p {
+                width: 95%;
+                font-size: 1em;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                margin: 0 0 0.3em;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>We looked everywhere!</h1>
+    <div id="eyes">
+        
+        <div id="pupil-left-container" class="pupil-container">
+            <div id="pupil-left" class="pupil">
+                <div class="highlight-left"></div>
+            </div>
+        </div>
+        <div id="pupil-right-container" class="pupil-container">
+            <div id="pupil-right" class="pupil">
+                <div class="highlight-right"></div>
+            </div>
+            
+        </div>
+    </div>
+    <p>But the page you were trying to view does not exist.</p>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script type="text/javascript" src="js/jqeye.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery("#pupil-left").jqEye({shape: "circle", radius:25});
+            jQuery("#pupil-right").jqEye({shape: "circle", radius:25});
+            $('#pupil-left').parent().append($('.highlight-left'));
+            $('#pupil-right').parent().append($('.highlight-right'));
+        });
+    </script>
+</body>
+</html>
+<!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->
